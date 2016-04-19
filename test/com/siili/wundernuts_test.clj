@@ -3,12 +3,12 @@
   (:use midje.sweet))
 
 
-(fact "you could not find an empty namelist"
+(fact "Namelist is empty"
       namelist => ())
 
-(fact "you could not find the first variable in the cube"
-    (checkcube 0 0 0) => "A")
+(fact "Get right letter from cube vector"
+    (letter-from-cube 0 0 0) => "A")
 
-(fact "you incorrectly wrote data from cube.txt to the cube Vector"
-    (checkcube 0 3 3) => "K")
+(fact "Read data from cube.txt and put it in Vector format"
+    (cube-from-text "cube.txt") => cube)
 
