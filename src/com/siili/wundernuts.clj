@@ -7,14 +7,28 @@
 
 (defn testfunction [x] (- x 2))
 
-;(defn readstring [x]
- ; (with-open [rdr (reader "test-text-file.rtf")] ;this enables us to open a .rtf file
-  ;(doseq [line (line-seq rdr)] ;line-seq returns text from rdr as a lazy sequence
-                               ;doseq repeats process
-   ; (println line))))
+(def test-list [[["A" "B"]["C" "D"]][["E" "F"]["G" "H"]][["I" "J"]["K" "L"]]])
+
+(defn checkcube [layer row index] ; inspect a specific index in the cube
+  (get-in test-list [layer row index]))
+
+(def namelist (list)) ; create empty list to which names will be added
 
 (defn readstring [filename]
-  (slurp filename))         ; read all content from file and print it, including newline
+  (with-open [rdr (reader filename)] ;this enables us to open a .txt file
+  (doseq [line (line-seq rdr)] ;line-seq returns text from rdr as a lazy sequence
+                               ;doseq repeats process
+    (println line)
+    ;add functionality that adds read words into List
+    ())))
+
+(defn readcubefile [filename]  ; read data on cube from file, then create a vector
+  (with-open [rdr (reader filename)]
+    (doseq [line (line-seq rdr)]
+      (println line))))
+
+;(defn readstring [filename]
+ ; (slurp filename))         ; read all content from file and print it, including newline
 
 ;FIX: Read data until newline, then stop
 
