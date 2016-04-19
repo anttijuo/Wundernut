@@ -3,9 +3,7 @@
 
 (use 'clojure.java.io) ;this enables us to use input/output commands
 
-(def number 0)
 
-(defn testfunction [x] (- x 2))
 
 (def test-list [[["A" "B"]["C" "D"]][["E" "F"]["G" "H"]][["I" "J"]["K" "L"]]])
 
