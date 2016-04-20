@@ -21,7 +21,7 @@
             ["J" "Q" "D" "T"]]])
 
 (defn letter-from-cube [layer row index]
-  (get-in test-list [layer row index]))
+  (get-in cube [layer row index]))
 
 (def namelist (list))
 
