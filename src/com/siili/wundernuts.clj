@@ -20,16 +20,23 @@
             ["S" "P" "O" "I"]
             ["J" "Q" "D" "T"]]])
 
-(def test-list [[["A" "B"]["C" "D"]][["E" "F"]["G" "H"]][["I" "J"]["K" "L"]]])
-
 (defn letter-from-cube [layer row index]
   (get-in test-list [layer row index]))
 
 (def namelist (list))
 
+(defn remove-newlines [text]
+  (replace text #"\n" ""))
+
+(defn cubeify [letters]
+  (partition 4 (partition 4 letters))
+
+(defn string->vector [letters]
+  (split letters #""))
+
 (defn cube-from-text [filename]
-  (let [all-letters (replace (slurp filename) #"\n" "")]
-    (partition 4(partition 4(split all-letters #"")))))
+  (let [letters (remove-newlines (slurp filename))]
+    (cubeify (string->vector letters)))))
 
 (defn -main
   [& args]
