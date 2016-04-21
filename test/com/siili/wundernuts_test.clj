@@ -22,3 +22,10 @@
       (letter "derp" 0) => \d
       (letter "henrik" 4) => \i
       (letter "antti" 2) => \t)
+
+(fact "Find distinct characters from cube"
+      (distinct-letters) => ["A" "J" "F" "E"
+                             "P" "U" "W" "O"
+                             "G" "M" "R" "N"
+                             "X" "K" "D" "S"
+                             "I" "Q" "T" "L"])

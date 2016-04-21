@@ -47,6 +47,9 @@
 (defn letter [word index]
   (get word index))
 
+(defn distinct-letters []
+  (distinct (flatten cube)))
+
 (defn -main
   [& args]
   (println "Hello, World!"))
