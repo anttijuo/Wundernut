@@ -3,25 +3,8 @@
         [clojure.string])
   (:gen-class))
 
-(def cube [[["a" "j" "f" "e"]
-            ["a" "p" "u" "w"]
-            ["o" "g" "m" "r"]
-            ["m" "n" "x" "k"]]
-           [["d" "n" "s" "i"]
-            ["f" "o" "d" "s"]
-            ["j" "e" "g" "i"]
-            ["w" "k" "p" "r"]]
-           [["e" "q" "m" "f"]
-            ["r" "k" "i" "d"]
-            ["d" "m" "i" "r"]
-            ["e" "o" "s" "d"]]
-           [["r" "t" "s" "l"]
-            ["d" "k" "p" "i"]
-            ["s" "p" "o" "i"]
-            ["j" "q" "d" "t"]]])
-
-(defn letter-from-cube [layer row index]
-  (get-in cube [layer row index]))
+(defn letter-from-cube [cube layer row column]
+  (get-in cube [layer row column]))
 
 (def namelist (list))
 
@@ -34,7 +17,7 @@
 (defn split-string>vector [letters splitter]
   (split letters splitter))
 
-(defn cube-from-text [filename]
+(defn cube [filename]
   (let [letters (remove-newlines (slurp filename))]
     (cubeify (split-string>vector (lower-case letters) #""))))
 
@@ -47,7 +30,7 @@
 (defn letter [word index]
   (get word index))
 
-(defn distinct-letters []
+(defn distinct-letters [cube]
   (distinct (flatten cube)))
 
 (defn distinct-letter [index]
@@ -64,4 +47,9 @@
 
 (defn -main
   [& args]
-  (println "Hello, World!"))
+  (let [cube (cube "cube.txt")
+        wordlist (wordlist "words.txt")
+        distinct-letters (distinct-letters cube)]
+    (prn cube)
+    (prn distinct-letters))
+  )
