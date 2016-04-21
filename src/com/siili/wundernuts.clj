@@ -3,22 +3,22 @@
         [clojure.string])
   (:gen-class))
 
-(def cube [[["A" "J" "F" "E"]
-            ["A" "P" "U" "W"]
-            ["O" "G" "M" "R"]
-            ["M" "N" "X" "K"]]
-           [["D" "N" "S" "I"]
-            ["F" "O" "D" "S"]
-            ["J" "E" "G" "I"]
-            ["W" "K" "P" "R"]]
-           [["E" "Q" "M" "F"]
-            ["R" "K" "I" "D"]
-            ["D" "M" "I" "R"]
-            ["E" "O" "S" "D"]]
-           [["R" "T" "S" "L"]
-            ["D" "K" "P" "I"]
-            ["S" "P" "O" "I"]
-            ["J" "Q" "D" "T"]]])
+(def cube [[["a" "j" "f" "e"]
+            ["a" "p" "u" "w"]
+            ["o" "g" "m" "r"]
+            ["m" "n" "x" "k"]]
+           [["d" "n" "s" "i"]
+            ["f" "o" "d" "s"]
+            ["j" "e" "g" "i"]
+            ["w" "k" "p" "r"]]
+           [["e" "q" "m" "f"]
+            ["r" "k" "i" "d"]
+            ["d" "m" "i" "r"]
+            ["e" "o" "s" "d"]]
+           [["r" "t" "s" "l"]
+            ["d" "k" "p" "i"]
+            ["s" "p" "o" "i"]
+            ["j" "q" "d" "t"]]])
 
 (defn letter-from-cube [layer row index]
   (get-in cube [layer row index]))
@@ -36,7 +36,7 @@
 
 (defn cube-from-text [filename]
   (let [letters (remove-newlines (slurp filename))]
-    (cubeify (split-string>vector letters #""))))
+    (cubeify (split-string>vector (lower-case letters) #""))))
 
 (defn wordlist [filename]
   (split-string>vector (slurp filename) #"\n"))
@@ -49,6 +49,18 @@
 
 (defn distinct-letters []
   (distinct (flatten cube)))
+
+(defn distinct-letter [index]
+  (get (distinct-letters) index))
+
+(defn letter-found? [word letter]
+  (.contains word letter))
+
+(defn letter-index [word letter]
+  (.indexOf word letter))
+
+;(defn words-with-distinct-letters [words]
+ ; (filter (fn [word] (contains? word ) words )
 
 (defn -main
   [& args]

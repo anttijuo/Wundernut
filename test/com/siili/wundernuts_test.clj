@@ -10,9 +10,9 @@
       (cube-from-text "cube.txt") => cube)
 
 (fact "Get right letter from cube vector"
-      (letter-from-cube 0 0 0) => "A"
-      (letter-from-cube 0 0 1) => "J"
-      (letter-from-cube 3 2 1) => "P")
+      (letter-from-cube 0 0 0) => "a"
+      (letter-from-cube 0 0 1) => "j"
+      (letter-from-cube 3 2 1) => "p")
 
 (fact "Change words from words.txt to vector format"
       (wordlist "words.txt") => vector?
@@ -24,8 +24,20 @@
       (letter "antti" 2) => \t)
 
 (fact "Find distinct characters from cube"
-      (distinct-letters) => ["A" "J" "F" "E"
-                             "P" "U" "W" "O"
-                             "G" "M" "R" "N"
-                             "X" "K" "D" "S"
-                             "I" "Q" "T" "L"])
+      (distinct-letters) => ["a" "j" "f" "e"
+                             "p" "u" "w" "o"
+                             "g" "m" "r" "n"
+                             "x" "k" "d" "s"
+                             "i" "q" "t" "l"])
+
+(fact "compare a letter to a letter of a word"
+      (letter-found? "abra" "a") => true
+      (letter-found? "derp" "b") => false
+      (letter-found? "herpa" "p") => true)
+
+(fact "get index of letter in a word"
+      (letter-index "abra" "a") => 0
+      (letter-index "derp" "r") => 2)
+
+;(fact "create a new wordlist that has only words with distinct letters"
+ ;     (words-with-distinct-letters ["apra" "kadabra" "alakazam"] => ["apra"]))
