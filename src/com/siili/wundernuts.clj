@@ -42,8 +42,10 @@
 (defn letter-index [word letter]
   (.indexOf word letter))
 
-;(defn words-with-distinct-letters [words]
- ; (filter (fn [word] (contains? word ) words )
+(defn valid-word? [word distinct-letters]
+  (every? true? (map (fn [letter]
+                       (.contains distinct-letters (str letter)))
+                     word)))
 
 (defn -main
   [& args]

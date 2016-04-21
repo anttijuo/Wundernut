@@ -55,6 +55,12 @@
       (letter-index "abra" "a") => 0
       (letter-index "derp" "r") => 2)
 
+(fact "does word consist of distinct letters only"
+      (valid-word? "abra" ["a" "b" "r"]) => true
+      (valid-word? "kadabra" ["k" "a" "z"]) => false
+      (valid-word? "abra" ["a" "b" "d" "z" "r"]) => true
+      (valid-word? "anu" ["a" "n" "z"]) => false)
+
 ;fact "show if all letters of a word exist in the distinct word list"
  ;     (all-letters-distinct?  distinct-word-list => true)
 
