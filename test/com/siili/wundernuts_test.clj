@@ -62,7 +62,7 @@
       (valid-word? "anu" ["a" "n" "z"]) => false)
 
 (fact "generate a new wordlist that consists of words with only distinct-letters"
-      (valid-words ["abra" "kadabra" "alakazam"] ["a" "b" "r"] ) => ["abra"])
+      (possible-words ["abra" "kadabra" "alakazam"] ["a" "b" "r"] ) => ["abra"])
 
 
 

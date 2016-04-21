@@ -50,14 +50,17 @@
 (defn valid-word? [word distinct-letters]
   (every? true? (valid-letters word distinct-letters)))
 
-(defn valid-words [words distinct-letters]
-  (filter (fn [word] (valid-word? word distinct-letters)) words))
+(defn possible-words [words distinct-letters]
+  (filter
+    #(valid-word? % distinct-letters)
+    words))
 
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
-        wordlist (wordlist "words.txt")
-        distinct-letters (distinct-letters cube)]
+        words (wordlist "words.txt")
+        distinct-letters (distinct-letters cube)
+        possible-words (possible-words words distinct-letters)]
     (prn cube)
-    (prn distinct-letters))
-  )
+    (prn distinct-letters)
+    #_(prn possible-words)))
