@@ -44,6 +44,9 @@
 (defn word [index]
   (get (wordlist "words.txt") index))
 
+(defn letter [word index]
+  (get word index))
+
 (defn -main
   [& args]
   (println "Hello, World!"))

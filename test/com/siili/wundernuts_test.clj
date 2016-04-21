@@ -17,3 +17,8 @@
 (fact "Change words from words.txt to vector format"
       (wordlist "words.txt") => vector?
       (word 0) => #"aakkonen")
+
+(fact "get nth letter from word"
+      (letter "derp" 0) => \d
+      (letter "henrik" 4) => \i
+      (letter "antti" 2) => \t)
