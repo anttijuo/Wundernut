@@ -42,10 +42,13 @@
 (defn letter-index [word letter]
   (.indexOf word letter))
 
+(defn valid-letters [word distinct-letters]
+  (map
+    #(.contains distinct-letters (str %))
+    word))
+
 (defn valid-word? [word distinct-letters]
-  (every? true? (map (fn [letter]
-                       (.contains distinct-letters (str letter)))
-                     word)))
+  (every? true? (valid-letters word distinct-letters)))
 
 (defn -main
   [& args]
