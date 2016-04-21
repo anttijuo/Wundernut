@@ -29,14 +29,17 @@
   (replace text #"\n" ""))
 
 (defn cubeify [letters]
-  (partition 4 (partition 4 letters))
+  (partition 4 (partition 4 letters)))
 
-(defn string->vector [letters]
-  (split letters #""))
+(defn split-string>vector [letters splitter]
+  (split letters splitter))
 
 (defn cube-from-text [filename]
   (let [letters (remove-newlines (slurp filename))]
-    (cubeify (string->vector letters)))))
+    (cubeify (split-string>vector letters #""))))
+
+(defn wordlist [filename]
+  (split-string>vector (slurp filename) #"\n"))
 
 (defn -main
   [& args]
