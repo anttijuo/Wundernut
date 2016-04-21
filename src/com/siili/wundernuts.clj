@@ -41,6 +41,9 @@
 (defn wordlist [filename]
   (split-string>vector (slurp filename) #"\n"))
 
+(defn word [index]
+  (get (wordlist "words.txt") index))
+
 (defn -main
   [& args]
   (println "Hello, World!"))

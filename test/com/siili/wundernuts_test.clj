@@ -15,4 +15,5 @@
       (letter-from-cube 3 2 1) => "P")
 
 (fact "Change words from words.txt to vector format"
-      (wordlist "words.txt") => vector?)
+      (wordlist "words.txt") => vector?
+      (word 0) => #"aakkonen")
