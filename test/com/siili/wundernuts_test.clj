@@ -41,10 +41,10 @@
 
 (fact "Find distinct characters from cube"
       (distinct-letters test-cube) => ["a" "j" "f" "e"
-                             "p" "u" "w" "o"
-                             "g" "m" "r" "n"
-                             "x" "k" "d" "s"
-                             "i" "q" "t" "l"])
+                                       "p" "u" "w" "o"
+                                       "g" "m" "r" "n"
+                                       "x" "k" "d" "s"
+                                       "i" "q" "t" "l"])
 
 (fact "compare a letter to a letter of a word"
       (letter-found? "abra" "a") => true
@@ -61,8 +61,8 @@
       (valid-word? "abra" ["a" "b" "d" "z" "r"]) => true
       (valid-word? "anu" ["a" "n" "z"]) => false)
 
-;fact "show if all letters of a word exist in the distinct word list"
- ;     (all-letters-distinct?  distinct-word-list => true)
+(fact "generate a new wordlist that consists of words with only distinct-letters"
+      (valid-words ["abra" "kadabra" "alakazam"] ["a" "b" "r"] ) => ["abra"])
 
-;(fact "create a new wordlist that has only words with distinct letters"
- ;     (words-with-distinct-letters ["apra" "kadabra" "alakazam"] => ["apra"]))
+
+

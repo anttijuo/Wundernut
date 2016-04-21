@@ -50,6 +50,9 @@
 (defn valid-word? [word distinct-letters]
   (every? true? (valid-letters word distinct-letters)))
 
+(defn valid-words [words distinct-letters]
+  (filter (fn [word] (valid-word? word distinct-letters)) words))
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
