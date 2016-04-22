@@ -88,6 +88,9 @@
 (defn bottom-left-quadrant? [row column]
   (and (= 3 row) (= 0 column)))
 
+(defn bottom-right-quadrant? [row column]
+  (and (= 3 row) (= 3 column)))
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
