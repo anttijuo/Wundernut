@@ -75,6 +75,10 @@
   (and (= 0 row)
        (or (= 1 column) (= 2 column))))
 
+(defn bottom-quadrant? [row column]
+  (and (= 3 row)
+       (or (= 1 column) (= 2 column))))
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
