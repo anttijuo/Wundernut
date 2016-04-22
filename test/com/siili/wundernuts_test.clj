@@ -62,4 +62,12 @@
       (possible-words
         ["abra" "kadabra" "alakazam"] ["a" "b" "r"] ) => ["abra"])
 
-;(fact "")
+(fact "does coordinate have an upper layer"
+      (upper-layer? 0) => false
+      (upper-layer? 1) => true
+      (upper-layer? 2) => true
+      (upper-layer? 3) => true)
+
+;(fact "find adjacent letters from zyx coordinates"
+ ;     (adjacent-letters 0 0 0) => [[0 0 1][0 1 0][0 1 1]
+  ;                                [1 0 0][1 0 1][1 1 0][1 1 1]])

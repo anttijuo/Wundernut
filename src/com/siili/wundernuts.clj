@@ -53,6 +53,12 @@
     #(valid-word? % distinct-letters)
     words))
 
+(defn upper-layer? [layer]
+  (< 0 layer))
+
+#_(defn adjacent-letters [layer row column]
+  )
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
