@@ -106,4 +106,8 @@
        (fact "check if the character belongs in the top-left quadrant"
              (top-left-quadrant? 0 0) => true
              (top-left-quadrant? 2 3) => false
-             (top-left-quadrant? 1 1) => false))
+             (top-left-quadrant? 1 1) => false)
+       (fact "check if the character belongs in the top-right quadrant"
+             (top-right-quadrant? 0 3) => true
+             (top-right-quadrant? 0 2) => false
+             (top-right-quadrant? 3 3) => false))
