@@ -82,4 +82,9 @@
              (central-quadrant? 2 2) => true
              (central-quadrant? 2 3) => false
              (central-quadrant? 3 3) => false
-             (central-quadrant? 0 0) => false))
+             (central-quadrant? 0 0) => false)
+       (fact "check if the character belongs in the left quadrant"
+             (left-quadrant? 1 0) => true
+             (left-quadrant? 2 0) => true
+             (left-quadrant? 2 3) => false
+             (left-quadrant? 3 2) => false))

@@ -63,6 +63,10 @@
   (and (or (= 1 row) (= 2 row))
        (or (= 1 column) (= 2 column))))
 
+(defn left-quadrant? [row column]
+  (and (= 0 column)
+       (or (= 1 row) (= 2 row))))
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
