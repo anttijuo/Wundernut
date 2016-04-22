@@ -68,6 +68,12 @@
       (upper-layer? 2) => true
       (upper-layer? 3) => true)
 
+(fact "does coordinate have a lower layer"
+      (lower-layer? 0) => true
+      (lower-layer? 1) => true
+      (lower-layer? 2) => true
+      (lower-layer? 3) => false)
+
 ;(fact "find adjacent letters from zyx coordinates"
  ;     (adjacent-letters 0 0 0) => [[0 0 1][0 1 0][0 1 1]
   ;                                [1 0 0][1 0 1][1 1 0][1 1 1]])

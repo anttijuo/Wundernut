@@ -56,6 +56,9 @@
 (defn upper-layer? [layer]
   (< 0 layer))
 
+(defn lower-layer? [layer]
+  (> 3 layer))
+
 #_(defn adjacent-letters [layer row column]
   )
 
