@@ -92,4 +92,9 @@
              (right-quadrant? 1 3) => true
              (right-quadrant? 2 3) => true
              (right-quadrant? 0 3) => false
-             (right-quadrant? 0 0) => false))
+             (right-quadrant? 0 0) => false)
+       (fact "check if the character belongs in the top quadrant"
+             (top-quadrant? 0 1) => true
+             (top-quadrant? 0 2) => true
+             (top-quadrant? 1 2) => false
+             (top-quadrant? 3 3) => false))
