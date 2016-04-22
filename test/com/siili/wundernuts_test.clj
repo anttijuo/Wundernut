@@ -74,6 +74,12 @@
       (lower-layer? 2) => true
       (lower-layer? 3) => false)
 
-;(fact "find adjacent letters from zyx coordinates"
- ;     (adjacent-letters 0 0 0) => [[0 0 1][0 1 0][0 1 1]
-  ;                                [1 0 0][1 0 1][1 1 0][1 1 1]])
+(facts "check which quadrant of the square a character belongs to"
+       (fact "check if the character belongs in the central quadrant"
+             (central-quadrant? 1 1) => true
+             (central-quadrant? 1 2) => true
+             (central-quadrant? 2 1) => true
+             (central-quadrant? 2 2) => true
+             (central-quadrant? 2 3) => false
+             (central-quadrant? 3 3) => false
+             (central-quadrant? 0 0) => false))

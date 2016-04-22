@@ -59,8 +59,9 @@
 (defn lower-layer? [layer]
   (> 3 layer))
 
-#_(defn adjacent-letters [layer row column]
-  )
+(defn central-quadrant? [row column]
+  (and (or (= 1 row) (= 2 row))
+       (or (= 1 column) (= 2 column))))
 
 (defn -main
   [& args]
