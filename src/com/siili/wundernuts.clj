@@ -91,6 +91,18 @@
 (defn bottom-right-quadrant? [row column]
   (and (= 3 row) (= 3 column)))
 
+(defn quadrant [row column]
+  (cond
+    (central-quadrant? row column) "central"
+    (left-quadrant? row column) "left"
+    (right-quadrant? row column) "right"
+    (top-quadrant? row column) "top"
+    (bottom-quadrant? row column) "bottom"
+    (top-left-quadrant? row column) "top-left"
+    (top-right-quadrant? row column) "top-right"
+    (bottom-left-quadrant? row column) "bottom-left"
+    (bottom-right-quadrant? row column) "bottom-right"))
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")

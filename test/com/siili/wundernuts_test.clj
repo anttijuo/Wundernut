@@ -115,7 +115,18 @@
              (bottom-left-quadrant? 3 0) => true
              (bottom-left-quadrant? 1 1) => false
              (bottom-left-quadrant? 3 1) => false)
-       (fact "check if the character belongs in the bottom-left quadrant"
+       (fact "check if the character belongs in the bottom-right quadrant"
              (bottom-right-quadrant? 3 3) => true
              (bottom-right-quadrant? 1 2) => false
              (bottom-right-quadrant? 2 3) => false))
+
+(fact "Determine which quadrant a letter belongs in"
+      (quadrant 0 0) => "top-left"
+      (quadrant 3 3) => "bottom-right"
+      (quadrant 1 1) => "central"
+      (quadrant 1 0) => "left"
+      (quadrant 1 3) => "right"
+      (quadrant 0 1) => "top"
+      (quadrant 3 1) => "bottom"
+      (quadrant 0 3) => "top-right"
+      (quadrant 3 0) => "bottom-left")
