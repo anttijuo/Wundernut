@@ -19,9 +19,6 @@
                  ["s" "p" "o" "i"]
                  ["j" "q" "d" "t"]]])
 
-(fact "Namelist is empty"
-      namelist => ())
-
 (fact "Read data from cube.txt and put it in vector format"
       (cube "cube.txt") => test-cube)
 
@@ -62,7 +59,7 @@
       (valid-word? "anu" ["a" "n" "z"]) => false)
 
 (fact "generate a new wordlist that consists of words with only distinct-letters"
-      (possible-words ["abra" "kadabra" "alakazam"] ["a" "b" "r"] ) => ["abra"])
+      (possible-words
+        ["abra" "kadabra" "alakazam"] ["a" "b" "r"] ) => ["abra"])
 
-
-
+;(fact "")

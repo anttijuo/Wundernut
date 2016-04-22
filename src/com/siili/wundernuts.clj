@@ -6,8 +6,6 @@
 (defn letter-from-cube [cube layer row column]
   (get-in cube [layer row column]))
 
-(def namelist (list))
-
 (defn remove-newlines [text]
   (replace text #"\n" ""))
 
