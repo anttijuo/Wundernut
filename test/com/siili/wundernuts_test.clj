@@ -120,7 +120,7 @@
              (bottom-right-quadrant? 1 2) => false
              (bottom-right-quadrant? 2 3) => false))
 
-(fact "Determine which quadrant a letter belongs in"
+(fact "determine which quadrant a letter belongs in"
       (quadrant 0 0) => "top-left"
       (quadrant 3 3) => "bottom-right"
       (quadrant 1 1) => "central"
@@ -130,3 +130,17 @@
       (quadrant 3 1) => "bottom"
       (quadrant 0 3) => "top-right"
       (quadrant 3 0) => "bottom-left")
+
+(fact "determine what specific coordinates are adjacent to a letter based on their quadrant"
+      (adjacent-coordinates 1 1) => [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]]
+      (adjacent-coordinates 1 0) => [[0 0] [0 1] [1 1] [2 0] [2 1]]
+      (adjacent-coordinates 1 3) => [[0 2] [0 3] [1 2] [2 2] [2 3]]
+      (adjacent-coordinates 0 1) => [[0 0] [0 2] [1 0] [1 1] [1 2]]
+      (adjacent-coordinates 3 1) => [[2 0] [2 1] [2 2] [3 0] [3 2]]
+      (adjacent-coordinates 0 0) => [[0 1] [1 0] [1 1]]
+      (adjacent-coordinates 0 3) => [[0 2] [1 2] [1 3]]
+      (adjacent-coordinates 3 0) => [[2 0] [2 1] [3 1]]
+      (adjacent-coordinates 3 3) => [[2 2] [2 3] [3 2]]
+      )
+
+;NEXT: Refactor quadrant and adjacent-coordinates to work with all values

@@ -103,12 +103,24 @@
     (bottom-left-quadrant? row column) "bottom-left"
     (bottom-right-quadrant? row column) "bottom-right"))
 
+    (defn adjacent-coordinates [row column]
+      (cond
+        (= (quadrant row column) "central") [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]]
+        (= (quadrant row column) "left") [[0 0] [0 1] [1 1] [2 0] [2 1]]
+        (= (quadrant row column) "right" ) [[0 2] [0 3] [1 2] [2 2] [2 3]]
+        (= (quadrant row column) "top" ) [[0 0] [0 2] [1 0] [1 1] [1 2]]
+        (= (quadrant row column) "bottom") [[2 0] [2 1] [2 2] [3 0] [3 2]]
+        (= (quadrant row column) "top-left") [[0 1] [1 0] [1 1]]
+        (= (quadrant row column) "top-right") [[0 2] [1 2] [1 3]]
+        (= (quadrant row column) "bottom-left") [[2 0] [2 1] [3 1]]
+        (= (quadrant row column) "bottom-right") [[2 2] [2 3] [3 2]]))
+
 (defn -main
   [& args]
   (let [cube (cube "cube.txt")
         words (wordlist "words.txt")
         distinct-letters (distinct-letters cube)
         possible-words (possible-words words distinct-letters)]
-    (prn cube)
-    (prn distinct-letters)
+    #_(prn cube)
+    #_(prn distinct-letters)
     #_(prn possible-words)))
