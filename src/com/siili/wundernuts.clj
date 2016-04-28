@@ -103,17 +103,29 @@
     (bottom-left-quadrant? row column) "bottom-left"
     (bottom-right-quadrant? row column) "bottom-right"))
 
-    (defn adjacent-coordinates [row column]
-      (cond
-        (= (quadrant row column) "central") [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]]
-        (= (quadrant row column) "left") [[0 0] [0 1] [1 1] [2 0] [2 1]]
-        (= (quadrant row column) "right" ) [[0 2] [0 3] [1 2] [2 2] [2 3]]
-        (= (quadrant row column) "top" ) [[0 0] [0 2] [1 0] [1 1] [1 2]]
-        (= (quadrant row column) "bottom") [[2 0] [2 1] [2 2] [3 0] [3 2]]
-        (= (quadrant row column) "top-left") [[0 1] [1 0] [1 1]]
-        (= (quadrant row column) "top-right") [[0 2] [1 2] [1 3]]
-        (= (quadrant row column) "bottom-left") [[2 0] [2 1] [3 1]]
-        (= (quadrant row column) "bottom-right") [[2 2] [2 3] [3 2]]))
+(defn adjacent-coordinates [quadrant row column]
+  (cond
+    (= "central" quadrant) [[(- row 1) (- column 1)] [(- row 1) column] [(- row 1) (+ column 1)]
+                           [row (- column 1)] [row (+ column 1)]
+                           [(+ row 1) (- column 1)] [(+ row 1) column] [(+ row 1) (+ column 1)]]
+    (= "left" quadrant) [[(- row 1) column] [(- row 1) (+ column 1)]
+                        [row (+ column 1)]
+                        [(+ row 1) column] [(+ row 1) (+ column 1)]]
+    (= "right" quadrant) [[(- row 1) (- column 1)] [(- row 1) column]
+                         [row (- column 1)]
+                         [(+ row 1) (- column 1)] [(+ row 1) column]]
+    (= "top" quadrant) [[row (- column 1)] [row (+ column 1)]
+                       [(+ row 1) (- column 1)] [(+ row 1) column] [(+ row 1) (+ column 1)]]
+    (= "bottom" quadrant) [[(- row 1) (- column 1)] [(- row 1) column] [(- row 1) (+ column 1)]
+                          [row (- column 1)] [row (+ column 1)]]
+    (= "top-left" quadrant) [[row (+ column 1)]
+                            [(+ row 1) column] [(+ row 1) (+ column 1)]]
+    (= "top-right" quadrant) [[row (- column 1)]
+                             [(+ row 1) (- column 1)] [(+ row 1) column]]
+    (= "bottom-left" quadrant) [[(- row 1) column] [(- row 1) (+ column 1)]
+                                [row (+ column 1)]]
+    (= "bottom-right" quadrant) [[(- row 1) (- column 1)] [(- row 1) column]
+                                 [row (- column 1)]]))
 
 (defn -main
   [& args]
