@@ -159,16 +159,26 @@
       (layer-coordinates "bottom-left" 3 0) (contains [[2 0] [2 1] [3 0] [3 1]])
       (layer-coordinates "bottom-right" 3 3) (contains [[2 2] [2 3] [3 2] [3 3]]))
 
-#_(fact "computate adjacent coordinates from all layers, if applicable"
+(fact "computate adjacent coordinates from all layers, if applicable"
       (all-coordinates "Both Layers" "central" 1 1) => {:current-layer [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]]
-                                                        :upper-layer [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]]
-                                                        :lower-layer [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]]}
-      ;(all-coordinates 1 0) => [[0 0] [0 1] [0 1] [1 1] [2 0] [2 1]]
-      ;(all-coordinates 1 3) => [[0 2] [0 3] [1 2] [1 3] [2 2] [2 3]]
-      ;(all-coordinates 0 1) => [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2]]
-      ;(all-coordinates 3 1) => [[2 0] [2 1] [2 2] [3 0] [3 1] [3 2]]
-      ;(all-coordinates 0 0) => [[0 0] [0 1] [1 0] [1 1]]
-      ;(all-coordinates 0 3) => [[0 2] [0 3] [1 2] [1 3]]
-      ;(all-coordinates 3 0) => [[2 0] [2 1] [3 0] [3 1]]
-      ;(all-coordinates 3 3) => [[2 2] [2 3] [3 2] [3 3]]
-      )
+                                                        :upper-layer [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2] [1 1]]
+                                                        :lower-layer [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2] [1 1]]}
+      (all-coordinates "Both Layers" "left" 1 0) => {:current-layer [[0 0] [0 1] [1 1] [2 0] [2 1]]
+                                                     :upper-layer [[0 0] [0 1] [1 1] [2 0] [2 1] [1 0]]
+                                                     :lower-layer [[0 0] [0 1] [1 1] [2 0] [2 1] [1 0]]}
+      (all-coordinates "No Upper Layer" "right" 1 3) => {:current-layer [[0 2] [0 3] [1 2] [2 2] [2 3]]
+                                                         :lower-layer [[0 2] [0 3] [1 2] [2 2] [2 3] [1 3]]}
+      (all-coordinates "No Lower Layer" "top" 0 1) => {:current-layer [[0 0] [0 2] [1 0] [1 1] [1 2]]
+                                                        :upper-layer [[0 0] [0 2] [1 0] [1 1] [1 2] [0 1]]}
+      (all-coordinates "Both Layers" "bottom" 3 1) => {:current-layer [[2 0] [2 1] [2 2] [3 0] [3 2]]
+                                                       :upper-layer [[2 0] [2 1] [2 2] [3 0] [3 2] [3 1]]
+                                                       :lower-layer [[2 0] [2 1] [2 2] [3 0] [3 2] [3 1]]}
+      (all-coordinates "No Upper Layer" "top-left" 0 0) => {:current-layer [[0 1] [1 0] [1 1]]
+                                                            :lower-layer [[0 1] [1 0] [1 1] [0 0]]}
+      (all-coordinates "No Lower Layer" "top-right" 0 3) => {:current-layer [[0 2] [1 2] [1 3]]
+                                                             :upper-layer [[0 2] [1 2] [1 3] [0 3]]}
+      (all-coordinates "Both Layers" "bottom-left" 3 0) => {:current-layer [[2 0] [2 1] [3 1]]
+                                                            :upper-layer [[2 0] [2 1] [3 1] [3 0]]
+                                                            :lower-layer [[2 0] [2 1] [3 1] [3 0]]}
+      (all-coordinates "No Upper Layer" "bottom-right" 3 3) => {:current-layer [[2 2] [2 3] [3 2]]
+                                                                :lower-layer [[2 2] [2 3] [3 2] [3 3]]})

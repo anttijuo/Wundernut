@@ -136,11 +136,15 @@
 (defn layer-coordinates [quadrant row column]
   (conj (adjacent-coordinates quadrant row column) [row column]))
 
-#_(defn all-coordinates [layer quadrant row column]
+(defn all-coordinates [layer quadrant row column]
   (cond
-    (= "Both Layers" layer) true
-    (= "No Upper Layer" layer) true
-    (= "No Lower Layer" layer) true))
+    (= "Both Layers" layer) {:current-layer (adjacent-coordinates quadrant row column)
+                             :upper-layer (layer-coordinates quadrant row column)
+                             :lower-layer (layer-coordinates quadrant row column)}
+    (= "No Upper Layer" layer) {:current-layer (adjacent-coordinates quadrant row column)
+                                :lower-layer (layer-coordinates quadrant row column)}
+    (= "No Lower Layer" layer) {:current-layer (adjacent-coordinates quadrant row column)
+                                :upper-layer (layer-coordinates quadrant row column)}))
 
 (defn -main
   [& args]
