@@ -74,6 +74,12 @@
       (lower-layer? 2) => true
       (lower-layer? 3) => false)
 
+(fact "calculate both upper and lower layer for coordinate"
+      (layers 0) => [false true]
+      (layers 1) => [true true]
+      (layers 2) => [true true]
+      (layers 3) => [true false])
+
 (facts "check which quadrant of the square a character belongs to"
        (fact "check if the character belongs in the central quadrant"
              (central-quadrant? 1 1) => true
@@ -141,3 +147,14 @@
       (adjacent-coordinates "top-right" 0 3) => [[0 2] [1 2] [1 3]]
       (adjacent-coordinates "bottom-left" 3 0) => [[2 0] [2 1] [3 1]]
       (adjacent-coordinates "bottom-right" 3 3) => [[2 2] [2 3] [3 2]])
+
+#_(fact "computate adjacent coordinates from all layers, if applicable"
+      (all-coordinates layer "central" 1 1) => [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]]
+      (all-coordinates 1 0) => [[0 0] [0 1] [0 1] [1 1] [2 0] [2 1]]
+      (all-coordinates 1 3) => [[0 2] [0 3] [1 2] [1 3] [2 2] [2 3]]
+      (all-coordinates 0 1) => [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2]]
+      (all-coordinates 3 1) => [[2 0] [2 1] [2 2] [3 0] [3 1] [3 2]]
+      (all-coordinates 0 0) => [[0 0] [0 1] [1 0] [1 1]]
+      (all-coordinates 0 3) => [[0 2] [0 3] [1 2] [1 3]]
+      (all-coordinates 3 0) => [[2 0] [2 1] [3 0] [3 1]]
+      (all-coordinates 3 3) => [[2 2] [2 3] [3 2] [3 3]])

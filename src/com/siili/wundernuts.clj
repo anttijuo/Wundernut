@@ -59,6 +59,9 @@
 (defn lower-layer? [layer]
   (> 3 layer))
 
+(defn layers [layer]
+  [(upper-layer? layer)(lower-layer? layer)])
+
 (defn central-quadrant? [row column]
   (and (or (= 1 row) (= 2 row))
        (or (= 1 column) (= 2 column))))
@@ -126,6 +129,9 @@
                                 [row (+ column 1)]]
     (= "bottom-right" quadrant) [[(- row 1) (- column 1)] [(- row 1) column]
                                  [row (- column 1)]]))
+
+#_(defn upper-coordinates [layer quadrant row column]
+  (adjacent-coordinates [quadrant row column]))
 
 (defn -main
   [& args]
