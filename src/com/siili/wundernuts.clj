@@ -60,7 +60,10 @@
   (> 3 layer))
 
 (defn layers [layer]
-  [(upper-layer? layer)(lower-layer? layer)])
+  (cond
+    (= false (upper-layer? layer)) "No Upper Layer"
+    (= false (lower-layer? layer)) "No Lower Layer"
+    (= true true) "Both Layers"))
 
 (defn central-quadrant? [row column]
   (and (or (= 1 row) (= 2 row))
@@ -130,8 +133,14 @@
     (= "bottom-right" quadrant) [[(- row 1) (- column 1)] [(- row 1) column]
                                  [row (- column 1)]]))
 
-#_(defn upper-coordinates [layer quadrant row column]
-  (adjacent-coordinates [quadrant row column]))
+(defn layer-coordinates [quadrant row column]
+  (conj (adjacent-coordinates quadrant row column) [row column]))
+
+#_(defn all-coordinates [layer quadrant row column]
+  (cond
+    (= "Both Layers" layer) true
+    (= "No Upper Layer" layer) true
+    (= "No Lower Layer" layer) true))
 
 (defn -main
   [& args]

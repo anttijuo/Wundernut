@@ -75,10 +75,10 @@
       (lower-layer? 3) => false)
 
 (fact "calculate both upper and lower layer for coordinate"
-      (layers 0) => [false true]
-      (layers 1) => [true true]
-      (layers 2) => [true true]
-      (layers 3) => [true false])
+      (layers 0) => "No Upper Layer"
+      (layers 1) => "Both Layers"
+      (layers 2) => "Both Layers"
+      (layers 3) => "No Lower Layer")
 
 (facts "check which quadrant of the square a character belongs to"
        (fact "check if the character belongs in the central quadrant"
@@ -148,13 +148,27 @@
       (adjacent-coordinates "bottom-left" 3 0) => [[2 0] [2 1] [3 1]]
       (adjacent-coordinates "bottom-right" 3 3) => [[2 2] [2 3] [3 2]])
 
+(fact "combine current coordinate with adjacent-coordinates"
+      (layer-coordinates "central" 1 1) (contains [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]])
+      (layer-coordinates "left" 1 0) (contains [[0 0] [0 1] [1 0] [1 1] [2 0] [2 1]])
+      (layer-coordinates "right" 1 3) (contains [[0 2] [0 3] [1 2] [1 3] [2 2] [2 3]])
+      (layer-coordinates "top" 0 1) (contains [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2]])
+      (layer-coordinates "bottom" 3 1) (contains [[2 0] [2 1] [2 2] [3 0] [3 1] [3 2]])
+      (layer-coordinates "top-left" 0 0) (contains [[0 0] [0 1] [1 0] [1 1]])
+      (layer-coordinates "top-right" 0 3) (contains [[0 2] [0 3] [1 2] [1 3]])
+      (layer-coordinates "bottom-left" 3 0) (contains [[2 0] [2 1] [3 0] [3 1]])
+      (layer-coordinates "bottom-right" 3 3) (contains [[2 2] [2 3] [3 2] [3 3]]))
+
 #_(fact "computate adjacent coordinates from all layers, if applicable"
-      (all-coordinates layer "central" 1 1) => [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]]
-      (all-coordinates 1 0) => [[0 0] [0 1] [0 1] [1 1] [2 0] [2 1]]
-      (all-coordinates 1 3) => [[0 2] [0 3] [1 2] [1 3] [2 2] [2 3]]
-      (all-coordinates 0 1) => [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2]]
-      (all-coordinates 3 1) => [[2 0] [2 1] [2 2] [3 0] [3 1] [3 2]]
-      (all-coordinates 0 0) => [[0 0] [0 1] [1 0] [1 1]]
-      (all-coordinates 0 3) => [[0 2] [0 3] [1 2] [1 3]]
-      (all-coordinates 3 0) => [[2 0] [2 1] [3 0] [3 1]]
-      (all-coordinates 3 3) => [[2 2] [2 3] [3 2] [3 3]])
+      (all-coordinates "Both Layers" "central" 1 1) => {:current-layer [[0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]]
+                                                        :upper-layer [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]]
+                                                        :lower-layer [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2]]}
+      ;(all-coordinates 1 0) => [[0 0] [0 1] [0 1] [1 1] [2 0] [2 1]]
+      ;(all-coordinates 1 3) => [[0 2] [0 3] [1 2] [1 3] [2 2] [2 3]]
+      ;(all-coordinates 0 1) => [[0 0] [0 1] [0 2] [1 0] [1 1] [1 2]]
+      ;(all-coordinates 3 1) => [[2 0] [2 1] [2 2] [3 0] [3 1] [3 2]]
+      ;(all-coordinates 0 0) => [[0 0] [0 1] [1 0] [1 1]]
+      ;(all-coordinates 0 3) => [[0 2] [0 3] [1 2] [1 3]]
+      ;(all-coordinates 3 0) => [[2 0] [2 1] [3 0] [3 1]]
+      ;(all-coordinates 3 3) => [[2 2] [2 3] [3 2] [3 3]]
+      )
